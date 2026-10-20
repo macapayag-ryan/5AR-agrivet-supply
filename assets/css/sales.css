@@ -1,0 +1,332 @@
+/* 5AR AGRIVET SUPPLY - POS and receipt styles (same class names as before) */
+
+.pos-sticky {
+    position: sticky;
+    top: 76px;
+}
+
+.pos-products {
+    max-height: 62vh;
+    overflow-y: auto;
+}
+
+.pos-product {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    width: 100%;
+    padding: 0.65rem 1rem;
+    background: #fff;
+    border: 0;
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+    color: var(--text);
+    transition: background 0.12s;
+}
+
+.pos-product:hover:not(:disabled) {
+    background: #f3f7f0;
+}
+
+.pos-product:focus-visible {
+    outline: 2px solid var(--leaf);
+    outline-offset: -2px;
+}
+
+.pos-product:disabled {
+    color: #9aa89d;
+    background: #f8f9f6;
+    cursor: not-allowed;
+}
+
+.pos-product.in-cart {
+    background: #e4f1e7;
+    box-shadow: inset 5px 0 0 var(--forest);
+}
+
+.pos-product.in-cart:hover:not(:disabled) {
+    background: #d6e9db;
+}
+
+.pos-product.in-cart .pos-product-name {
+    font-weight: 700;
+    color: var(--forest-dark);
+}
+
+.pos-incart {
+    display: inline-block;
+    margin-top: 0.25rem;
+    padding: 0.1rem 0.55rem;
+    border-radius: 999px;
+    background: var(--forest);
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.pos-incart.maxed {
+    background: var(--gold-dark);
+}
+
+.pos-product.pos-flash {
+    animation: pos-flash 0.8s ease-out;
+}
+
+.pos-cart-row.pos-cart-new {
+    animation: pos-cart-new 1s ease-out;
+}
+
+@keyframes pos-flash {
+    from {
+        background: #a9d1b4;
+    }
+
+    to {
+        background: #e4f1e7;
+    }
+}
+
+@keyframes pos-cart-new {
+    from {
+        background: var(--gold-soft);
+    }
+
+    to {
+        background: transparent;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .pos-product,
+    .pos-product.pos-flash,
+    .pos-cart-row.pos-cart-new {
+        animation: none;
+        transition: none;
+    }
+}
+
+.pos-product-name {
+    font-weight: 500;
+}
+
+.pos-product-meta {
+    font-size: 0.8rem;
+    color: var(--muted);
+}
+
+.pos-product-price {
+    font-weight: 700;
+    color: var(--forest-dark);
+    white-space: nowrap;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}
+
+.pos-cart {
+    max-height: 36vh;
+    overflow-y: auto;
+}
+
+.pos-cart-row {
+    padding: 0.65rem 1rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.pos-cart-row:last-child {
+    border-bottom: 0;
+}
+
+.pos-cart-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+
+.pos-cart-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.4rem;
+}
+
+.pos-cart-bottom strong {
+    color: var(--forest-dark);
+    font-variant-numeric: tabular-nums;
+}
+
+.pos-qty {
+    display: inline-flex;
+    align-items: center;
+}
+
+.pos-qty .btn {
+    padding: 0.15rem 0.5rem;
+}
+
+.pos-qty input {
+    width: 3.5rem;
+    text-align: center;
+    padding: 0.15rem 0.25rem;
+}
+
+/* Order summary: forest panel so the amount due is the clear focal point */
+.pos-totals {
+    padding: 0.85rem 1rem;
+    border-top: 1px solid var(--border);
+    background: var(--surface-alt);
+}
+
+.pos-total-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.pos-grand {
+    font-family: var(--font-display);
+    font-size: 1.65rem;
+    font-weight: 700;
+    color: var(--forest);
+    font-variant-numeric: tabular-nums;
+}
+
+.pos-change {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--leaf-dark);
+}
+
+.pos-short {
+    color: var(--danger);
+}
+
+.stat-value-text {
+    font-size: 1.05rem;
+    line-height: 1.35;
+    min-height: 2.2rem;
+}
+
+.receipt-wrap {
+    max-width: 380px;
+}
+
+.receipt .card-body {
+    padding: 1.5rem;
+}
+
+.receipt-store {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--forest-dark);
+}
+
+.receipt-lines td,
+.receipt-lines th {
+    padding: 0.3rem 0;
+    border-bottom: 1px dashed var(--border-strong);
+    vertical-align: top;
+}
+
+.receipt-lines thead th {
+    color: var(--muted);
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.receipt-totals td {
+    padding: 0.15rem 0;
+}
+
+.receipt-void {
+    border: 1px solid var(--danger);
+    color: var(--danger);
+    border-radius: 4px;
+    padding: 0.4rem 0.6rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+@media print {
+    .receipt-wrap {
+        max-width: 80mm;
+        margin: 0 auto;
+    }
+
+    .receipt .card-body {
+        padding: 0;
+    }
+
+    /* Receipts print in plain black for thermal printers */
+    .receipt-store,
+    .pos-grand {
+        color: #000;
+    }
+}
+
+/* ===== POS: clearer cart and easier quantity entry =====
+   Selectors start with #posApp so they win over the base rules above. */
+#posApp .pos-cart {
+    max-height: 46vh;
+    min-height: 9rem;
+}
+
+#posApp .pos-cart-row {
+    padding: 0.9rem 1rem;
+}
+
+#posApp .pos-cart-row .fw-medium {
+    font-size: 1.02rem;
+    font-weight: 600;
+    color: var(--forest-dark);
+}
+
+#posApp .pos-cart-bottom {
+    margin-top: 0.6rem;
+}
+
+#posApp .pos-cart-bottom strong {
+    font-size: 1.2rem;
+}
+
+/* Quantity stepper: big buttons and a wide number box */
+#posApp .pos-qty .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.6rem;
+    height: 2.6rem;
+    padding: 0;
+    font-size: 1.2rem;
+    border-color: var(--border-strong);
+}
+
+#posApp .pos-qty .btn:hover {
+    background: #e4f1e7;
+    border-color: var(--leaf);
+    color: var(--forest);
+}
+
+#posApp .pos-qty input {
+    width: 5.5rem;
+    height: 2.6rem;
+    padding: 0 0.4rem;
+    font-size: 1.15rem;
+    font-weight: 700;
+    text-align: center;
+    border: 2px solid var(--leaf);
+    background: #fff;
+}
+
+#posApp .pos-qty input:focus {
+    border-color: var(--forest);
+    box-shadow: 0 0 0 0.2rem rgba(61, 139, 80, 0.25);
+}
+
+#posApp .pos-cart-row.pos-cart-new {
+    box-shadow: inset 4px 0 0 var(--gold);
+}
